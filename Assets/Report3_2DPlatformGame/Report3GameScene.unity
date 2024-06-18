@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endPos: -32
-  startPos: 26
+  startPos: 32
   speed: 4
 --- !u!1 &676201292
 GameObject:
@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endPos: -32
-  startPos: 35
+  startPos: 32
   speed: 4
 --- !u!483693784 &676201295
 TilemapRenderer:
