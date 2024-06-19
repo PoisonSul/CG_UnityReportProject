@@ -16,15 +16,23 @@ public class TileLooping : MonoBehaviour
     //}
 
     // Update is called once per frame
-    public virtual void Update()
+    void Update()
     {
-        if (this.transform.position.x > endPos)
+        if (this.transform.position.x <= endPos)
         {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
+            transform.position = new Vector3(startPos, 0, 0);
         }
         else
         {
-            transform.position = new Vector3(startPos,0,0);
+            Move();
+        }
+    }
+
+    public void Move()
+    {
+        if (this.transform.position.x > endPos) //?
+        {
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
     }
 
@@ -36,6 +44,7 @@ public class TileLooping : MonoBehaviour
 
     public void SpeedReverse()
     {
-        speed -= speed;
+        Debug.Log("qq");
+        speed *= -1;
     }
 }

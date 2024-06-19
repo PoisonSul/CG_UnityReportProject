@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Report1_BallGame/Report1MainMenuScene.unity
-    guid: 4f2cc21b7b9dda74780e01731dda5dda
+    path: Assets/Report3_2DPlatformGame/Report3MenuScene.unity
+    guid: 5a567813aa7a7364bb8f2e5c609b51c0
   - enabled: 1
-    path: Assets/Report1_BallGame/Report1GameScene.unity
-    guid: e7cf923941b3ee94c9ee65d3af09fb54
+    path: Assets/Report3_2DPlatformGame/Report3GameScene.unity
+    guid: da8cda07453ebfd48b88e7f2365e6a3a
   m_configObjects: {}
