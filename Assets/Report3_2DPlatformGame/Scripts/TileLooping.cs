@@ -47,4 +47,9 @@ public class TileLooping : MonoBehaviour
         Debug.Log("qq");
         speed *= -1;
     }
+
+    public void SpeedStop()
+    {
+        speed = 0;
+    }
 }

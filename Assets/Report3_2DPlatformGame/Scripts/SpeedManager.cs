@@ -32,9 +32,13 @@ public class SpeedManager : MonoBehaviour
         if (!reversing)
         {
             reversing = true;
-            BroadcastMessage(nameof(TileLooping.SpeedReverse), SendMessageOptions.RequireReceiver);
+            BroadcastMessage(nameof(TileLooping.SpeedReverse), SendMessageOptions.DontRequireReceiver);
             Invoke(nameof(CoolDown), 2f);
         }
+    }
+    public void StopNow()
+    {
+        BroadcastMessage(nameof(TileLooping.SpeedStop), SendMessageOptions.DontRequireReceiver);
     }
 
     private void CoolDown()

@@ -25,22 +25,6 @@ public class Player : MonoBehaviour
     private float lerpCamSize = 0f;
 
 
-    public static Player Instance { get; private set; }
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -94,13 +78,14 @@ public class Player : MonoBehaviour
                     SpeedManager.Instance.AddSpeedToAll(2f);
                 }
             }
+            //GameMAnager.Instance.BonusOn();
             //SpeedManager.Instance.AddSpeedToAll(2f);
         }
-        else if (onFlank)
+        else if (onFlank) //아마 문제있음
         {
             animator.SetBool("flankSpeed", false);
-            lerpCamSize = Mathf.Lerp(Camera.orthographicSize, baseCamSize, 5f * Time.deltaTime);
-            Camera.orthographicSize = lerpCamSize;
+            //lerpCamSize = Mathf.Lerp(Camera.orthographicSize, baseCamSize, 5f * Time.deltaTime);
+            //Camera.orthographicSize = lerpCamSize;
             if (SpeedManager.Instance.reversing)
             {
                 SpeedManager.Instance.AddSpeedToAll(2f);
@@ -110,6 +95,12 @@ public class Player : MonoBehaviour
                 SpeedManager.Instance.AddSpeedToAll(-2f);
             }
             onFlank = false;
+            //GameMAnager.Instance.BonusOn(false);
+        }
+        else
+        {
+            lerpCamSize = Mathf.Lerp(Camera.orthographicSize, baseCamSize, 5f * Time.deltaTime);
+            Camera.orthographicSize = lerpCamSize;
         }
 
         //if (transform.position.y > prePos.y) //velocity는 중력값을 포함하므로 참고
@@ -137,6 +128,7 @@ public class Player : MonoBehaviour
             SpeedManager.Instance.ReverseSpeedToAll();
             shapeModule.angle = 90f;
             particle.Emit(10000);
+            GameMAnager.Instance.UseLive();
             transform.position = new Vector2(-10f,-2f);
             shapeModule.angle = 11.87f;
             //particle.Emit(10000);
