@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -17,7 +18,8 @@ public class Player : MonoBehaviour
     private bool onGround = false;
     [SerializeField] float baseXPos = -2.7f;
     private float lerpXPos = 0f;
-    public bool onFlank = false;
+    private bool onFlank = false;
+    private bool needToLand = false;
 
     [SerializeField] Camera Camera;
     [SerializeField] float baseCamSize = 2.5f;
@@ -37,7 +39,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && !needToLand)
         {
             if (!jumping)
             {
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
             {
                 jumping = false;
                 animator.SetBool("jumpReady", false);
+                needToLand = true;
                 animator.SetBool("goingUp", true);
                 emissionModule.rateOverTime = 0;
                 rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -147,6 +150,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         onWater = true;
+        needToLand = false;
         //Debug.Log(collision.gameObject.name.ToString());
         if (collision.gameObject.name == "GroundCollision")
         {
