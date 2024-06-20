@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
                 rb.AddForce(new Vector2(0, 7f), ForceMode2D.Impulse);
                 //animator.SetBool("goingUp", true);
             }
-        }
+        } //점프 및 상승 구현
 
 
 
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
             //GameMAnager.Instance.BonusOn();
             //SpeedManager.Instance.AddSpeedToAll(2f);
         }
-        else if (onFlank) //�Ƹ� ��������
+        else if (onFlank) //아마 문제있음
         {
             animator.SetBool("flankSpeed", false);
             //lerpCamSize = Mathf.Lerp(Camera.orthographicSize, baseCamSize, 5f * Time.deltaTime);
@@ -101,9 +101,9 @@ public class Player : MonoBehaviour
         {
             lerpCamSize = Mathf.Lerp(Camera.orthographicSize, baseCamSize, 5f * Time.deltaTime);
             Camera.orthographicSize = lerpCamSize;
-        }
+        } //속도 증가 구현
 
-        //if (transform.position.y > prePos.y) //velocity�� �߷°��� �����ϹǷ� ����
+        //if (transform.position.y > prePos.y) //velocity는 중력값을 포함하므로 참고
         //{
         //    animator.SetBool("goingUp", false);
         //    animator.SetBool("goingDown", true);
@@ -120,9 +120,9 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("goingUp", false);
             animator.SetBool("goingDown", true);
-        }
+        } //하강 구현
 
-        if (transform.position.x < prePos.x)
+        if (transform.position.x < prePos.x)  //가아끔식 마찰때문인가 바닥에 있는데 밀려서 충돌 판정남 판정 널널하게 해야할듯
         {
             Debug.LogWarning("going back");
             SpeedManager.Instance.ReverseSpeedToAll();
@@ -132,14 +132,14 @@ public class Player : MonoBehaviour
             transform.position = new Vector2(-10f,-2f);
             shapeModule.angle = 11.87f;
             //particle.Emit(10000);
-        }
+        } //충돌발생시 처리를 위한 구현
 
         lerpXPos = Mathf.Lerp(transform.position.x,baseXPos, 1f * Time.deltaTime);
 
         if (transform.position.x <= baseXPos && !onGround)
         {
             transform.position = new Vector2(lerpXPos,transform.position.y);
-        }
+        } //플레이어 캐릭터 화면의 한 좌표에 고정시키기위한 구현
 
         prePos = transform.position;
     }

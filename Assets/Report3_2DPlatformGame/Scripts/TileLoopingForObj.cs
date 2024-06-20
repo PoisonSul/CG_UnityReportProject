@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TileLoopingForObj : TileLoopingRNG //À¸¾Ç »ó¼ÓÀÇ »ó¼ÓÀÌ´Ù
+public class TileLoopingForObj : TileLoopingRNG //ìœ¼ì•… ìƒì†ì˜ ìƒì†ì´ë‹¤
 {
     [SerializeField] float[] objectYPos;
     public override void Update()

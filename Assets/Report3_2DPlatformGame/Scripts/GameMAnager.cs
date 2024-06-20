@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
@@ -63,7 +63,7 @@ public class GameMAnager : MonoBehaviour
 
             GOPanel.gameObject.SetActive(true);
             scoreText.gameObject.SetActive(false);
-            GOText.text = "<color=green>¡°ºˆ : " + score.ToString() + "</color>";
+            GOText.text = "<color=green>Ï†êÏàò : " + score.ToString() + "</color>";
         }
     }
 
@@ -80,7 +80,7 @@ public class GameMAnager : MonoBehaviour
     //{
     //    BonusScore(On);
     //}
-    //async void BonusScore(bool On = true)
+    //async void BonusScore(bool On = true) //
     //{
         
     //}
@@ -93,16 +93,16 @@ public class GameMAnager : MonoBehaviour
         }
         else if(!onNotice)
         {
-            scoreText.text = "¡°ºˆ : " + score.ToString();
+            scoreText.text = "Ï†êÏàò : " + score.ToString();
         }
     }
 
     async void ScoreHighlight()
     {
         onNotice = true;
-        scoreText.text = "<color=red>¡°ºˆ : " + score.ToString() + "</color>";
+        scoreText.text = "<color=red>Ï†êÏàò : " + score.ToString() + "</color>";
         await Task.Delay(1000);
         onNotice = false;
-        scoreText.text = "¡°ºˆ : " + score.ToString();
+        scoreText.text = "Ï†êÏàò : " + score.ToString();
     }
 }
